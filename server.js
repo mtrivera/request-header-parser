@@ -2,35 +2,26 @@
 // where your node app starts
 
 // init project
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express')
+const useragent = require('express-useragent');
 const app = express()
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
+app.use(bodyParser.json());
+app.use(cors());
+app.use(useragent.express());
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'))
+// API URL
+const api = '/api/whoami';
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  response.sendFile(__dirname + '/views/index.html')
-})
-
-// Simple in-memory store
-const dreams = [
-  "Find and count some sheep",
-  "Climb a really tall mountain",
-  "Wash the dishes"
-]
-
-app.get("/dreams", (request, response) => {
-  response.send(dreams)
-})
-
-// could also use the POST body instead of query string: http://expressjs.com/en/api.html#req.body
-app.post("/dreams", (request, response) => {
-  dreams.push(request.query.dream)
-  response.sendStatus(200)
-})
+app.get(api, (req, res, next) => {
+  const ipaddress = req.ip;
+  const language = req.acceptsLanguages();
+  const software = `OS: ${req.useragent.os}; Browser: ${req.useragent.browser}`;
+  res.json({ipaddress, 'language': language[0], software});
+});
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
