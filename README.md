@@ -1,27 +1,40 @@
-Welcome to the Glitch BETA
+Request Header Parser Microservice
 ==========================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+The second freeCodeCamp API Project for the Back-End curriculum. 
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+## User Stories
 
-Find out more [about Glitch](https://glitch.com/about).
+* I can get the IP address, language and operating system for my browser.
 
+## How to use?
 
-Your Project
-------------
+1. Visit [https://endurable-sky.glitch.me/api/whoami](https://endurable-sky.glitch.me/api/whoami)
+2. You receive this type of output: `{ "ipaddress": 1.2.3.4.5, 
+"language": "en-US" , "software": "OS: Windows 10.0, Browser: Firefox"}`
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
+## Tech/Framwork
+* NodeJS
+* Express
+* cors
+* body-parser
+* express-useragent
+* Glitch
+* Github
 
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+## Issues
 
+### Issue
+The ip address being outputted was incorrect.
 
-Made by [Fog Creek](https://fogcreek.com/)
--------------------
+### Solution
+I searched for 'correct ip address express' on DuckDuckGo. I found a Stack
+Overflow that mentioned a solution. The author mentioned the express proxy docs
+[express proxies](http://expressjs.com/en/guide/behind-proxies.html).
 
-\ ゜o゜)ノ
+## API Reference
+ 
+[Express.js 4.x](https://expressjs.com/en/4x/api.html)
+
+## Credits
+Haozhun's Solution [Stack Overflow](https://stackoverflow.com/questions/10849687/express-js-how-to-get-remote-client-address)
